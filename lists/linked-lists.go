@@ -10,6 +10,10 @@ type node struct {
 	next *node
 }
 
+func (n node) String() string {
+	return fmt.Sprintf("%d", n.value)
+}
+
 type linkedList struct {
 	head *node
 	len int 
