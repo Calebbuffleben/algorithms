@@ -42,6 +42,12 @@ func (l *linkedList) remove(value int) {
 }
 
 func (l linkedList) get(value int) *node {
+	for iteractor := l.head; iteractor != nil; iteractor = iteractor.next {
+		if iteractor.value == value {
+			return iteractor
+		}
+	}
+
 	return nil
 }
 
@@ -57,4 +63,7 @@ func (l *linkedList) String() string {
 func linkedLists() {
 	l := linkedList{}
 	l.add(1)
+	l.add(5)
+	fmt.Println(l)
+	fmt.Println(*(l.get(5)))
 }
