@@ -38,7 +38,19 @@ func (l *linkedList) add(value int) {
 }
 
 func (l *linkedList) remove(value int) {
+	var previous *node
 
+	for current := l.head; current !=nil; current = current.next {
+		if current.value == value {
+			if l.head == current {
+				l.head = current.next
+			} else {
+				previous.next = current.next
+				return
+			}
+		}
+		previous = current
+	}
 }
 
 func (l linkedList) get(value int) *node {
@@ -66,4 +78,7 @@ func linkedLists() {
 	l.add(5)
 	fmt.Println(l)
 	fmt.Println(*(l.get(5)))
+	l.remove(3)
+	l.remove(5)
+	fmt.Println(l)
 }
