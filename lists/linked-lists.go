@@ -76,7 +76,7 @@ func (l *linkedList) String() string {
 	sb := strings.Builder{}
 
 	for iterator := l.head; iterator != nil; iterator = iterator.next {
-		sb.WriteString(fmt.Sprintf("%d", iterator.data))
+		sb.WriteString(fmt.Sprintf("%d", iterator.value))
 	}
 	return sb.String()
 }
