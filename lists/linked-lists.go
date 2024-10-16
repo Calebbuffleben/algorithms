@@ -3,58 +3,54 @@ package lists
 import ( 
 	"fmt"
 	"strings"
-	"errors"
 )
 
 type node struct {
-	data int
+	value int
 	next *node
 }
 
 func (n node) String() string {
-	return fmt.Sprintf("%d", n.data)
+	return fmt.Sprintf("%d", n.value)
 }
 
 type linkedList struct {
 	head *node
-	size int 
 }
 
-// NewLinkedList creates and returns a new empty linked list
-func NewLinkedList() *linkedList {
-    return &linkedList{head: nil, size: 0}
-}
+func (l *linkedList) add(value int, index int) {
+	newNode := &node{value: value}
 
-func (l *linkedList) add(position int, data int) error {
-	if position < 0 || position > l.size {
-		return errors.New("invalid position")
-	}
-
-	newNode := &node{data: data}
-
-	if position == 0 {
-		//Insert at beggining
+	if index == 0 {
 		newNode.next = l.head
-		l.head = newNode;
-	} else {
-		// Insert at the specified position
-		current := l.head
-		for i := 0; i < position - 1; i++{
-			current = current.next
-		}
-		newNode.next = current.next
-		current.next = newNode
+		l.head = newNode
+		return
 	}
 
-	l.size++
-	return nil
+	current := l.head
+	counter := 0
+
+	//traverse de linked list and assign the value of the next to the current
+	for current != nil && counter < index - 1 {
+		current = current.next
+		counter++
+	}
+
+	if current == nil {
+        fmt.Println("Index out of range")
+        return
+    }
+
+	// Assign the new value to the current
+	newNode.next = current.next
+	current.next = newNode
 }
 
 func (l *linkedList) remove(value int) {
 	var previous *node
 
 	for current := l.head; current !=nil; current = current.next {
-		if current.data == value {
+		if current.value == value {
 			if l.head == current {
 				l.head = current.next
 			} else {
@@ -68,7 +64,7 @@ func (l *linkedList) remove(value int) {
 
 func (l linkedList) get(value int) *node {
 	for iteractor := l.head; iteractor != nil; iteractor = iteractor.next {
-		if iteractor.data == value {
+		if iteractor.value == value {
 			return iteractor
 		}
 	}
