@@ -56,6 +56,7 @@ func (l *linkedList) remove(value int) {
 		return
 	}
 
+	// This loop find the value before the value we want to remove and assign to current
 	current := l.head
 	for current.next != nil && current.next.value != value {
 		current = current.next
@@ -65,6 +66,9 @@ func (l *linkedList) remove(value int) {
 		return
 	}
 
+	/* We just assign the next of the current value to the next of the value that we want to remove, 
+	removing this way the value of the "chain"
+	*/
 	current.next = current.next.next
 }
 
