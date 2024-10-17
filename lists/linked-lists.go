@@ -47,19 +47,25 @@ func (l *linkedList) add(value int, index int) {
 }
 
 func (l *linkedList) remove(value int) {
-	var previous *node
-
-	for current := l.head; current !=nil; current = current.next {
-		if current.value == value {
-			if l.head == current {
-				l.head = current.next
-			} else {
-				previous.next = current.next
-				return
-			}
-		}
-		previous = current
+	if l.head == nil {
+		return
 	}
+
+	if l.head.value == value {
+		l.head = l.head.next
+		return
+	}
+
+	current := l.head
+	for current.next != nil && current.next.value != value {
+		current = current.next
+	}
+
+	if current.next == nil {
+		return
+	}
+
+	current.next = current.next.next
 }
 
 func (l linkedList) get(value int) *node {
