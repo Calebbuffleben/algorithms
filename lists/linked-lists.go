@@ -78,13 +78,13 @@ func (l linkedList) get(value int) *node {
 
 	for current != nil {
 		if current.value == value {
-			return index, true
+			return current
 		}
 
 		current = current.next
 		index++
 	}
-	return -1, false
+	return nil
 }
 
 func (l *linkedList) String() string {
