@@ -21,6 +21,7 @@ type linkedList struct {
 func (l *linkedList) add(value int, index int) {
 	newNode := &node{value: value}
 
+	//Verify if the value is the head
 	if index == 0 {
 		newNode.next = l.head
 		l.head = newNode
