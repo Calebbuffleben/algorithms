@@ -29,3 +29,17 @@ func PrintLinkedList(head *Node) {
 	}
 	fmt.Println("nil")
 }
+
+func main() {
+	// Create a sample linked list: 1 -> 2 -> 3 -> 4 -> nil
+	head := &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3, Next: &Node{Value: 4, Next: nil}}}}
+
+	fmt.Println("Original Linked List:")
+	PrintLinkedList(head)
+
+	// Reverse the linked list
+	reversedHead := ReverseLinkedList(head)
+
+	fmt.Println("Reversed Linked List:")
+	PrintLinkedList(reversedHead)
+}
