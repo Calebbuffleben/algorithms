@@ -1,13 +1,13 @@
 package lists
 
-import ( 
+import (
 	"fmt"
 	"strings"
 )
 
 type node struct {
 	value int
-	next *node
+	next  *node
 }
 
 func (n node) String() string {
@@ -32,15 +32,15 @@ func (l *linkedList) add(value int, index int) {
 	counter := 0
 
 	//traverse de linked list and assign the value of the next to the current
-	for current != nil && counter < index - 1 {
+	for current != nil && counter < index-1 {
 		current = current.next
 		counter++
 	}
 
 	if current == nil {
-        fmt.Println("Index out of range")
-        return
-    }
+		fmt.Println("Index out of range")
+		return
+	}
 
 	// Assign the new value to the current
 	newNode.next = current.next
@@ -67,7 +67,7 @@ func (l *linkedList) remove(value int) {
 		return
 	}
 
-	/* We just assign the next of the current value to the next of the value that we want to remove, 
+	/* We just assign the next of the current value to the next of the value that we want to remove,
 	removing this way the value of the "chain"
 	*/
 	current.next = current.next.next
