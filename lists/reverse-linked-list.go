@@ -30,7 +30,7 @@ func PrintLinkedList(head *Node) {
 	fmt.Println("nil")
 }
 
-func main() {
+func mainLinkedList() {
 	// Create a sample linked list: 1 -> 2 -> 3 -> 4 -> nil
 	head := &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3, Next: &Node{Value: 4, Next: nil}}}}
 
